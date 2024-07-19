@@ -1,0 +1,62 @@
+﻿
+@model KStypemig.Models.KhachHang
+
+@{
+    ViewBag.Title = "ThongtinKhachhang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var item = Model;
+}
+
+<h2>Thông tin Khách hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTaiKhoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cccd)
+        </th>
+        <th></th>
+    </tr>
+
+       <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTaiKhoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cccd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Suathongtin", new { idkh = item.IdKhachHang }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdKhachHang }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdKhachHang })
+            </td>
+        </tr>
+    
+
+</table>

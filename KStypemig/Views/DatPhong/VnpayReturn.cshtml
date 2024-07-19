@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "VnpayReturn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+
+                    <div class="">
+                        <h1 class="">Thanh toán</h1>
+                        @if (ViewBag.TinhTrangThanhToan != null)
+                        {
+                            <p>@ViewBag.TinhTrangThanhToan!</p>
+                        }
+                        <p>@ViewBag.Tien</p>
+                       <p>Xin Quý khách kiểm tra email!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿@model PagedList.IPagedList<KStypemig.Models.LoaiPhong>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "DsLoaiphong";
+    Layout = "~/Views/Shared/_LayoutKhachhangvaAdmin.cshtml";
+}
+
+<h2>DsLoaiphong</h2>
+<h3>@ViewBag.tbao</h3>
+<style>
+    .col-ma-loai {
+        width: 15%;
+    }
+
+    .col-ten-loai {
+        width: 25%;
+    }
+
+    .col-ghi-chu {
+        width: 20%;
+    }
+
+    .col-duong-dan-anh {
+        width: 25%;
+    }
+
+    .col-so-luong-phong {
+        width: 10%;
+    }
+
+    .col-actions {
+        width: 5%;
+    }
+</style>
+
+@if (Model != null)
+{
+    <p>
+        @Html.ActionLink("Create New", "ThemLoaiPhong")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th class="col-ma-loai">
+                Mã loại
+            </th>
+            <th class="col-ten-loai">
+                Tên loại
+            </th>
+            <th class="col-ghi-chu">
+                Ghi chú
+            </th>
+            <th class="col-duong-dan-anh">
+                Đường dẫn ảnh
+            </th>
+            <th class="col-so-luong-phong">
+                Số lượng phòng
+            </th>
+            <th class="col-actions"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="col-ma-loai">
+                    @Html.DisplayFor(modelItem => item.MaLoai)
+                </td>
+                <td class="col-ten-loai">
+                    @Html.DisplayFor(modelItem => item.TenLoai)
+                </td>
+                <td class="col-ghi-chu">
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td class="col-duong-dan-anh">
+                    @Html.DisplayFor(modelItem => item.DuongDanAnh)
+                </td>
+                <td class="col-duong-dan-anh">
+                    @Html.DisplayFor(modelItem => item.SoluongPhong)
+                </td>
+                <td class="col-actions">
+                    @Html.ActionLink("Edit", "SuaLoaiPhong", new { map = item.MaLoai }) |
+                     @Html.ActionLink("Delete", "XoaLoaiPhong", new { maloai = item.MaLoai })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("DsLoaiphong", new { page }))
+    </div>
+}
+else
+{
+    <h2>@ViewBag.tb</h2>
+}

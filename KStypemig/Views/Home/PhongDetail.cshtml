@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "PhongDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc  
+@model  KStypemig.Models.ViewModels.AnhChitietListPhong_Viewmodel
+@*<h2>PhongDetail</h2>*@
+<!-- Breadcrumb Section Begin -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>Our Rooms</h2>
+                    <div class="bt-option">
+                        <a href="./home.html">Home</a>
+                        <span>Rooms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Breadcrumb Section End -->
+<!-- Rooms Section Begin -->
+
+<section class="rooms-section spad">
+
+    <div class="container">
+
+        <div class="row">
+            @foreach (var item2 in Model.anhChiTietPhong_ViewModels)
+            {
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-item">
+                        @foreach (var anh in item2.AnhChiTietPhongs)
+                        {
+                            <img src="@anh.Urlanh" alt="anhtrong">
+
+                        }
+                        <div class="ri-text">
+                            <h4>@item2.Phong.TenPhong</h4>
+
+
+                            @*<h3>@item2. $<span>/Pernight</span></h3>*@
+
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Size:</td>
+                                        <td>@item2.Phong.DienTich m2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>@item2.Phong.Songuoitoida</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>@item2.Phong.Sogiuong</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td>Wifi, Television, Bathroom,...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("DatPhongCuoicung","DatPhong",new { map = item2.Phong.MaPhong })" class="primary-btn">Book Now!</a>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        
+
+        <div class="col-lg-12">
+            
+            <div class="room-pagination">
+                @Html.PagedListPager((PagedList.IPagedList)Model.anhChiTietPhong_ViewModels, page => Url.Action("PhongDetail", new { malp = ViewBag.malp, page }))
+
+                
+            </div>
+        </div>
+        </div>
+
+    </div>
+</section>
+<!-- Rooms Section End -->

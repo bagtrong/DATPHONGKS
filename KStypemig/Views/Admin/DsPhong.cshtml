@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<KStypemig.Models.Phong>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "DsPhong";
+    Layout = "~/Views/Shared/_LayoutKhachhangvaAdmin.cshtml";
+}
+
+<h2>DsPhong</h2>
+<h3>@ViewBag.tb</h3>
+@if (Model != null)
+{
+    <p>
+        @Html.ActionLink("Create New", "ThemPhong")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                Tên loại
+            </th>
+            <th>
+                Tên phòng
+            </th>
+            <th>
+                Diện tích
+            </th>
+            <th>
+                Giá thuê
+            </th>
+            <th>
+                Số giường
+            </th>
+            <th>
+                Ghi chú
+            </th>
+            <th>
+                Tình trạng phòng
+            </th>
+            <th>
+                Số người tối đa
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiPhong.TenLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenPhong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienTich)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaThue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sogiuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ghichu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tinhtrangphong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Songuoitoida)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "SuaPhong", new { map = item.MaPhong }) |
+                    @Html.ActionLink("Delete", "XoaPhong", new { maphong = item.MaPhong })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Dsphong", new { page }))
+    </div>
+}
+else
+{
+
+    <h2>@ViewBag.tb</h2>
+}

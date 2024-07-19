@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "DSLoaiPhong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc
+    @model PagedList.IPagedList<KStypemig.Models.LoaiPhong>
+<!-- Breadcrumb Section Begin -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>Our Rooms</h2>
+                    <div class="bt-option">
+                        <a href="./home.html">Home</a>
+                        <span>Rooms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Breadcrumb Section End -->
+<!-- Rooms Section Begin -->
+
+<section class="rooms-section spad">
+
+    <div class="container">
+
+        <div class="row">
+            @foreach (var item2 in Model)
+            {
+
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-item">
+
+                        <img src="@item2.DuongDanAnh" alt="">
+                        <div class="ri-text">
+
+                            <h4>@item2.TenLoai</h4>
+
+                            <p>@item2.GhiChu</p>
+                            @*<h3>@item2. $<span>/Pernight</span></h3>*@
+
+                            @*<table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Size:</td>
+                                        <td>30 ft</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>Max persion 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>King Beds</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td>Wifi, Television, Bathroom,...</td>
+                                    </tr>
+                                </tbody>
+                            </table>*@
+                            <a href="@Url.Action("PhongDetail", "Home", new { malp = item2.MaLoai })" class="primary-btn">More Details</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+
+
+            <div class="col-lg-12">
+
+                    
+                        <div class="room-pagination" style="text-align:center">
+                            @Html.PagedListPager(Model, page => Url.Action("DSLoaiPhong", new { page }),
+                            new PagedListRenderOptions
+                            {
+                            LinkToPreviousPageFormat = "<i class='fa fa-long-arrow-left'></i>",
+                            LinkToNextPageFormat = "<i class='fa fa-long-arrow-right'></i>",
+                            LinkToFirstPageFormat = "<i class='fa fa-angle-double-left'></i>",
+                            LinkToLastPageFormat = "<i class='fa fa-angle-double-right'></i>"
+                            })
+                        </div>
+                    
+               </div>
+        </div>
+
+    </div>
+</section>
+<!-- Rooms Section End -->

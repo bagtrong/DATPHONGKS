@@ -1,0 +1,49 @@
+﻿
+@model List<KStypemig.Models.AnhChiTietPhong>
+<div class="room-details-item">
+    @foreach (var item in Model)
+    {
+
+        <img src="@item.Urlanh" alt="">
+        <div class="rd-text">
+            <div class="rd-title">
+                <h3>@ViewBag.TenLoai</h3>
+                <div class="rdt-right">
+                    <div class="rating">
+                        <i class="icon_star"></i>
+                        <i class="icon_star"></i>
+                        <i class="icon_star"></i>
+                        <i class="icon_star"></i>
+                        <i class="icon_star-half_alt"></i>
+                    </div>
+                    @*<a href="#">Booking Now</a>*@
+                </div>
+            </div>
+            <h2>@string.Format("{0:#,##0}", item.phong.GiaThue),000 VNĐ<span>/Pernight</span></h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="r-o">Size:</td>
+                        <td>@item.phong.DienTich m2</td>
+                    </tr>
+                    <tr>
+                        <td class="r-o">Capacity:</td>
+                        <td>@item.phong.Songuoitoida</td>
+                    </tr>
+                    <tr>
+                        <td class="r-o">Số Giường:</td>
+                        <td>@item.phong.Sogiuong</td>
+                    </tr>
+                    <tr>
+                        <td class="r-o">Dịch vụ:</td>
+                        <td>Wifi, Television, Bathroom,...</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="f-para">
+                @ViewBag.gioith
+            </p>
+           
+        </div>
+    }
+</div>

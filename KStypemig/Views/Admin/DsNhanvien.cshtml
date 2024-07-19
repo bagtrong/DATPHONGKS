@@ -1,0 +1,84 @@
+﻿
+
+@model PagedList.IPagedList<KStypemig.Models.NhanVien>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "DsNhanvien";
+    Layout = "~/Views/Shared/_LayoutKhachhangvaAdmin.cshtml";
+}
+
+<h2>DsNhanvien</h2>
+@if (Model != null)
+{
+    <p>
+        @Html.ActionLink("Create New", "ThemNhanvien")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                Mật khẩu
+            </th>
+            <th>
+                Họ tên
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Là admin
+            </th>
+            <th>
+                Căn cước công dân
+            </th>
+            <th>
+                vai trò
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatKhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoDienThoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LaAdmin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cccd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vaitro)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "SuaNhanvien", new { manv = item.IdNhanVien }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdNhanVien }) |
+                    @Html.ActionLink("Delete", "XoaNhanvien", new { manv = item.IdNhanVien })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("DsNhanvien", new { page }))
+    </div>
+}
+else
+{
+    <h2>@ViewBag.tb</h2>
+}
+

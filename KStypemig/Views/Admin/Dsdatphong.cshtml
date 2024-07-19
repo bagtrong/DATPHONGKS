@@ -1,0 +1,123 @@
+﻿@model PagedList.IPagedList<KStypemig.Models.DatPhong>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Dsdatphong";
+    Layout = "~/Views/Shared/_LayoutKhachhangvaAdmin.cshtml";
+}
+
+<h2>Dsdatphong</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ThemHoadon")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã đặt phòng
+        </th>
+
+        @*<th>
+        tên phòng    </th>*@
+        <th>
+            mã phòng
+        </th>
+        <th>
+            Id khách hàng
+        </th>
+        <th>
+            tên khách hàng
+        </th>
+        <th>
+            Căn cước công dân
+        </th>
+        <th>
+            ngày đặt
+        </th>
+        <th>
+            ngày đến dự định
+        </th>
+        <th>
+            ngày trả dự định
+        </th>
+        <th>
+            ngày đến thực tế
+        </th>
+        <th>
+            ngày trả thực tế
+        </th>
+        <th>
+            thời gian thanh toán
+        </th>
+        <th>
+            tình trạng thanh toán
+        </th>
+        <th>
+            phương thức thanh toán
+        </th>
+        <th>
+            Dịch vụ
+        </th>
+        <th>
+            Thành tiền
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDatPhong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaPhong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.IdKhachHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenKhachHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cancuoccd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDenDuDinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayTraDuDinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDenthucte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayTrathucte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thoigianthanhtoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tinhtrangthanhtoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phuongthucthanhtoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DichVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhTien)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "SuaHoadon", new { mahd=item.MaDatPhong }) |
+            @Html.ActionLink("Delete", "XoaHoadon", new { madp=item.MaDatPhong })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Dsdatphong", new { page }))
+</div>

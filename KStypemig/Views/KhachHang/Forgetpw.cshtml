@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Forgetpw";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    @if (!string.IsNullOrEmpty(ViewBag.tb))
+                    {
+                        <div class="alert alert-success">@ViewBag.tb</div>
+                    }
+                    <h2>Forgot Password</h2>
+
+
+                    <form action="@Url.Action("ForgetPw", "KhachHang")" method="post">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

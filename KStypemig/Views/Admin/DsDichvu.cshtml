@@ -1,0 +1,53 @@
+﻿@model PagedList.IPagedList<KStypemig.Models.DichVu>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "DsDichvu";
+    Layout = "~/Views/Shared/_LayoutKhachhangvaAdmin.cshtml";
+}
+
+<h2>DsDichvu</h2>
+@if (Model != null)
+{
+    <p>
+        @Html.ActionLink("Create New", "ThemDichVu")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tên dịch vụ
+            </th>
+            <th>
+                Giá dịch vụ
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDichVu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaDichVu)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "SuaDichVu", new { madv = item.MaDichVu }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaDichVu }) |
+                    @Html.ActionLink("Delete", "XoaDichVu", new { madv = item.MaDichVu })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pagination-container">
+        @Html.PagedListPager(Model, page => Url.Action("DsDichvu", new { page }))
+
+    </div>
+}
+else
+{
+
+    <h2>@ViewBag.tb</h2>
+}

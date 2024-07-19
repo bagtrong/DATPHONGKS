@@ -1,0 +1,18 @@
+﻿@model List< WeatherData>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Information</title>
+</head>
+<body>
+      @foreach (var weather in Model)
+    {
+        <div>
+            <h2>@weather.Name</h2>
+            <p>Temperature: @weather.Main.Temp °C</p>
+            <p>doj amar: @weather.Main.Humidity %</p>
+        </div>
+    }  
+</body>
+</html>

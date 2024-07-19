@@ -1,0 +1,56 @@
+﻿.pagination-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 0;
+    border-radius: 4px;
+}
+
+    .pagination li {
+        display: inline;
+    }
+
+        .pagination li a,
+        .pagination li span {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+        }
+
+            .pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+
+            .pagination li span.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination li span.active,
+            .pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+            
+/*          đoạn này biểu tượng mũi tên*/
+.fa-long-arrow-right, .fa-long-arrow-left, .fa-angle-double-left, .fa-angle-double-right {
+    font-size: 20px; /* Thay đổi kích thước font */
+    color: #4CAF50; /* Màu sắc */
+    margin-left: 5px; /* Khoảng cách bên trái */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+    .fa-long-arrow-right:hover, .fa-long-arrow-left:hover, .fa-angle-double-left:hover, .fa-angle-double-right:hover {
+        transform: translateX(5px); /* Dịch chuyển khi hover */
+    }

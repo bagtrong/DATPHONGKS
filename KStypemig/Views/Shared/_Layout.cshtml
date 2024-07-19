@@ -1,0 +1,345 @@
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Sona Template">
+    <meta name="keywords" content="Sona, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hoàng hôn hotel</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/wroot/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/wroot/css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+        <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="canvas-close">
+            <i class="icon_close"></i>
+        </div>
+        <div class="search-icon search-switch">
+            <i class="icon_search"></i>
+        </div>
+        <div class="header-configure-area">
+            <div class="language-option">
+                <img src="~/Content/wroot/img/flag.jpg" alt="">
+                <span>EN <i class="fa fa-angle-down"></i></span>
+                <div class="flag-dropdown">
+                    <ul>
+                        <li><a href="#">Zi</a></li>
+                        <li><a href="#">Fr</a></li>
+                    </ul>
+                </div>
+            </div>
+            @if (Session["tenkh"] != null)
+            {
+                <a href="@Url.Action("ThongtinKhachhang", "KhachHang")" class="bk-btn">Hello, @Session["tenkh"]!</a>
+                <a href="@Url.Action("Dangxuat","KhachHang")" class="active">Đăng xuất!</a>
+            }
+            else
+            {
+                <a href="@Url.Action("DangNhap", "KhachHang")" class="bk-btn">Sign in!</a>
+            }
+        </div>
+        <nav class="mainmenu mobile-menu">
+            <ul>
+                <li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("DSLoaiPhong", "Home")">Rooms</a></li>
+                @*<li><a href="./about-us.html">About Us</a></li>
+                <li>
+                    <a href="./pages.html">Pages</a>
+                    <ul class="dropdown">
+                        <li><a href="./room-details.html">Room Details</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="#">Family Room</a></li>
+                        <li><a href="#">Premium Room</a></li>
+                    </ul>
+                </li>*@
+                <li><a href="@Url.Action("Blog","Home")">News</a></li>
+                <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="top-social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-tripadvisor"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+        <ul class="top-widget">
+            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+            <li><i class="fa fa-envelope"></i> tduc060220@gmail.com</li>
+        </ul>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+        <div class="top-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul class="tn-left">
+                            <li><i class="fa fa-phone"></i> 0818151162</li>
+                            <li><i class="fa fa-envelope"></i> tduc060220@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="tn-right">
+                            <div class="top-social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                            @if (Session["tenkh"] != null)
+                            {
+                                <a href="" class="bk-btn">Hello, @Session["tenkh"]!</a>
+
+                                <a href="@Url.Action("ThongtinKhachhang", "KhachHang")" class="bk-btn">Thông tin khách hàng</a>
+                                <a href="@Url.Action("Dangxuat","KhachHang")" class="custom-link">Đăng xuất!</a>
+                            }
+                            else if (Session["tentk"] != null && (String)Session["matk"] == "qly")
+                            {
+                                <a href="@Url.Action("dSTAIKHOAN", "ADMIN")" class="bk-btn">Hello, quản trị viên!</a>
+
+                                <a href="@Url.Action("Dangxuat","admin")" class="custom-link">Đăng xuất!</a>
+
+                            }
+                            else if (Session["tentk"] != null && (String)Session["matk"] == "nhanvien")
+                            {
+                                <a href="@Url.Action("DSTAIKHOAN", "ADMIN")" class="bk-btn">Hello, @Session["tentk"]!</a>
+
+                                <a href="@Url.Action("Dangxuat","admin")" class="custom-link">Đăng xuất!</a>
+
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("DangNhap", "KhachHang")" class="bk-btn">Sign in!</a>
+                                <a href="@Url.Action("DangNhap", "Admin")" class=" bk-btn">Bạn là Quản trị viên?<br />Đăng nhập tại đây!</a>
+                            }
+                            @*<div class="language-option">
+                                    <img src="~/Content/wroot/img/flag.jpg" alt="">
+                                    <span>EN <i class="fa fa-angle-down"></i></span>
+                                    <div class="flag-dropdown">
+                                        <ul>
+                                            <li><a href="#">Zi</a></li>
+                                            <li><a href="#">Fr</a></li>
+                                        </ul>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="./index.html">
+                                <img src="~/Content/wroot/img/capture.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="nav-menu">
+                            <nav class="mainmenu">
+                                <ul>
+                                    <li class="@(Request.Path == Url.Action("Index", "Home") ? "active" : "") "><a href="@Url.Action("Index", "Home")">Home</a></li>
+                                    <li class="@(Request.Path == Url.Action("DSLoaiPhong", "Home") ? "active" : "")"><a href="@Url.Action("DSLoaiPhong", "Home")">Rooms</a></li>
+                                    @*<li><a href="./about-us.html">About Us</a></li>
+                                        <li>
+                                            <a href="./pages.html">Loại Phòng</a>
+                                            <ul class="dropdown">
+                                                <li><a href="./room-details.html">Phòng Tiêu Chuẩn</a></li>
+                                                <li><a href="./blog-details.html">Phòng Hạng Trung</a></li>
+                                                <li><a href="#">Phòng cao cấp</a></li>
+                                                <li><a href="#">Premium Room</a></li>
+                                            </ul>
+                                        </li>*@
+                                    <li class="@(Request.Path == Url.Action("Blog", "Home") ? "active" : "") "><a href="@Url.Action("Blog","Home")">News</a></li>
+                                    <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                                </ul>
+                            </nav>
+                            <div class="nav-right search-switch">
+                                <i class="icon_search"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+    <!-- Breadcrumb Section Begin -->
+    @RenderBody()
+    <!-- Room Details Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-text">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="ft-about">
+                            <div class="logo">
+                                <a href="#">
+                                    <img src="~/Content/wroot/img/capture.png" alt="">
+                                </a>
+                            </div>
+                            <p>Chúng tôi truyền cảm hứng và phục vụ hàng triệu du khách trên các địa phương.</p>
+                            <div class="fa-social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="ft-contact">
+                            <h6>Contact Us</h6>
+                            <ul>
+                                <li>(+84) 918417464</li>
+                                <li>bangbaobinh3@gmail.com</li>
+                                <li>Address: Vĩnh hồng, Bình Giang, Hải Dương</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="ft-newslatter">
+                            <h6>New latest</h6>
+                            <p>Get the latest updates and offers.</p>
+                            <form action="#" class="fn-form">
+                                <input type="text" placeholder="Email">
+                                <button type="submit"><i class="fa fa-send"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-option">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <ul>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Terms of use</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Environmental Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="co-text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+    <!-- Js Plugins -->
+    <script src="~/Content/wroot/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/wroot/js/bootstrap.min.js"></script>
+    <script src="~/Content/wroot/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/wroot/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/wroot/js/jquery-ui.min.js"></script>
+    <script src="~/Content/wroot/js/jquery.slicknav.js"></script>
+    <script src="~/Content/wroot/js/owl.carousel.min.js"></script>
+    <script src="~/Content/wroot/js/main.js"></script>
+
+    
+    <script src="https://app.tudongchat.com/js/chatbox.js"></script>
+    <script>
+        const tudong_chatbox = new TuDongChat('8z2XFXisVz8XK6HOn359T')
+        tudong_chatbox.initial()
+    </script>
+</body>
+
+</html>

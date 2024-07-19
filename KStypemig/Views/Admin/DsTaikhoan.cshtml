@@ -1,0 +1,80 @@
+﻿
+@model PagedList.IPagedList<KStypemig.Models.KhachHang>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "DsTaikhoan";
+    Layout = "~/Views/Shared/_LayoutKhachhangvaAdmin.cshtml";
+}
+<h2>DsTaikhoan</h2>
+
+<h3>@ViewBag.tbao</h3>
+<p>
+    @Html.ActionLink("Create New", "Themkhachhang")
+</p>
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Tên Tài khoản
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>
+                Họ tên
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Căn cước công dân
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTaiKhoan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatKhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoDienThoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cccd)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Suakhachhang", new { makh = item.IdKhachHang }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdKhachHang }) |
+                    @Html.ActionLink("Delete", "Xoakhachhang", new { makh = item.IdKhachHang })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="pagination-container">
+        <ul class="pagination-container">
+            @Html.PagedListPager(Model, page => Url.Action("DsTaikhoan", new { page }))
+        </ul>
+    </div>
+}
+else
+{
+    <h2>@ViewBag.tb</h2>
+}
+

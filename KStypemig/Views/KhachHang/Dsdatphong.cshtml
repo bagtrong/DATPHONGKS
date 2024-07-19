@@ -1,0 +1,103 @@
+﻿@model PagedList.IPagedList<KStypemig.Models.DatPhong>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Dsdatphong";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách đặt phòng</h2>
+<h3>@ViewBag.tbao</h3>
+<table class="table">
+    <tr>
+
+        <th>
+         Tên khách hàng    </th>
+        <th>
+            Căn cước công dân     </th>
+        <th>
+    Ngày đặt    </th>
+        <th>
+     Ngày đến dự định   </th>
+        <th>
+      Ngày trả dự định  </th>
+
+        <th>
+      Thời gian thanh toán   </th>
+        <th>
+       Tình trạng thanh toán
+        </th>
+        <th>
+          Phương thức thanh toán      </th>
+        <th>
+        Dịch vụ
+        </th>
+        <th>
+         Thành tiền     </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKhachHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cancuoccd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDenDuDinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayTraDuDinh)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Thoigianthanhtoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tinhtrangthanhtoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phuongthucthanhtoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DichVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhTien)
+            </td>
+            <td>
+                <a href="@Url.Action("xoadatphong", new { madp = item.MaDatPhong })" class="cancel-link">Hủy đặt</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Dsdatphong", new { page }))
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var cancelLinks = document.querySelectorAll('.cancel-link');
+
+        cancelLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Ngăn không cho liên kết hoạt động ngay lập tức
+
+                var confirmCancel = confirm("Bạn có chắc chắn muốn hủy đặt phòng này không?");
+
+                if (confirmCancel) {
+                    window.location.href = this.href; // Nếu người dùng xác nhận, điều hướng đến liên kết
+                }
+                // Nếu người dùng chọn "Cancel", không làm gì cả
+            });
+        });
+    });
+</script>
+

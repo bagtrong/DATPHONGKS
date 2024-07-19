@@ -1,0 +1,279 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model KStypemig.Models.ViewModels.AnhchitietphongVaReview
+
+
+<!-- Room Details Section Begin -->
+<section class="room-details-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                @Html.Partial("~/Views/Review/detailPhong.cshtml", Model.anhChiTietPhongs);
+                @Html.Partial("~/Views/Review/binhluan.cshtml", Model.Reviews);
+
+
+                <div class="review-add">
+                    <h4>@ViewBag.loi</h4>
+                    <h4>Add Review</h4>
+                    <form action="@Url.Action("Add_review","DatPhong",new {maph=ViewBag.maphong})" method="post" class="ra-form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Name*" name="ten">
+
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Email*" name="email">
+                            </div>
+                            <div class="col-lg-12">
+                                <div>
+                                    <h5>You Rating:</h5>
+                                    
+                                    <div class="rating" id="rating">
+                                        <select id="rating" name="Rate">
+                                            <option value="1">1 Star</option>
+                                            <option value="2">2 Stars</option>
+                                            <option value="3">3 Stars</option>
+                                            <option value="4">4 Stars</option>
+                                            <option value="5">5 Stars</option>
+                                        </select>
+                                    </div>
+                                    <input type="hidden" id="rating-value" name="Rate" />
+
+                                </div>
+                                <textarea placeholder="Your Review" name="binhluan"></textarea>
+                                <button type="submit">Submit Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="room-booking">
+                    <h3>Your Reservation</h3>
+                    <form id="customerForm" action="@Url.Action("DatPhongCuoicung", "DatPhong")" method="post">
+                        <div class="check-date">
+                            <label for="date-in">NGÀY ĐẾN:</label>
+                            <input type="date" id="date-in" name="NgayDen" value="@ViewBag.ngayden">
+
+                        </div>
+                        <div class="check-date">
+                            <label for="date-out">NGÀY ĐI:</label>
+                            <input type="date" id="date-out" name="NgayDi" value="@ViewBag.ngaydi">
+                        </div>
+                        <div class="check-date">
+                            <label>Tên khách hàng</label>
+                            <input id="tenkh" type="text" name="Ten" value="@ViewBag.ten" />
+                        </div>
+                        <div class="check-date">
+                            <label>số CCCD:</label>
+                            <input id="cc" type="password" name="CC" value="@ViewBag.cc" />
+                        </div>
+                        <div class="check-date">
+                            <label>Email:</label>
+                            <input id="em" type="text" name="em" value="@ViewBag.em" />
+                            <p>@ViewBag.tb</p>
+                        </div>
+                        <div class="check-date">
+                            <label>Số người đến ở:</label>
+                            <input id="" type="number" name="songuoiden" value="@ViewBag.tb  " required />
+                        </div>
+
+                        <div class="select-option">
+                            <label for="room">Dịch vụ</label>
+                            <select id="" name="madichvu" class="">
+                                <option value="0">Không dùng</option>
+                                <option value="1">Ăn sáng-50.000</option>
+                                <option value="2">Ăn trưa-100.000</option>
+                                <option value="3">Ăn tối-150.000</option>
+                            </select>
+                        </div>
+
+                        @*<select>
+            <option></option>
+        </select>*@
+                        @*<div class="select-option">
+            <label for="guest">Guests:</label>
+            <select id="guest">
+                <option value="1.5">1 Adult, 1 Children</option>
+
+                <option value="2">2 People</option>
+                <option value="2.5">2 Adult, 1 Children</option>
+                <option value="3">3 Adult</option>
+                <option value="4">4 People</option>
+
+            </select>
+        </div>
+        <div class="select-option">
+            <label for="room">Bed:</label>
+            <select id="room">
+                <option value="">1 </option>
+                <option value="">2 </option>
+                <option value="">3 </option>
+
+            </select>
+        </div>*@
+
+                        @*//đây là form thanh toán*@
+                        <div class="select-option">
+                            <label for="room">Hình thức thanh toán</label>
+                            <select id="room" name="TypePayment" class="drTypePayment">
+                                <option value="1" @(ViewBag.typepayment == 1 ? "selected" : "") selected>COD</option>
+                                <option value="2" @(ViewBag.typepayment == 2 ? "selected" : "")>Chuyển khoản</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="load_form_payment" style="display:none;">
+                            <h4><label>Chọn phương thức thanh toán:</label><br /></h4>
+                            <h5>Cách 1: Chuyển hướng sang VNPAY chọn phương thức thanh toán</h5>
+                            <label><input type="radio" name="TypePaymentVN" value="0" id="bankcode_Default" checked @(ViewBag.typepaymentVN == 0 ? "checked" : "") /> Cổng thanh toán VNPAYQR </label>
+                            <h5>Cách 2: Tách phương thức thanh toán tại site của Merchant</h5>
+                            <label><input type="radio" name="TypePaymentVN" value="1" @(ViewBag.typepaymentVN == 1 ? "checked" : "") /> Thanh toán qua ứng dụng hỗ trợ VNPAYQR </label><br />
+                            <label><input type="radio" name="TypePaymentVN" value="2" @(ViewBag.typepaymentVN == 2 ? "checked" : "") /> ATM-Tài khoản ngân hàng nội địa </label><br />
+                            <label><input type="radio" name="TypePaymentVN" value="3" @(ViewBag.typepaymentVN == 3 ? "checked" : "") /> Thanh toán qua thẻ quốc tế </label><br />
+                        </div>
+                        <input value="@ViewBag.maphong" name="map" type="hidden" />
+                        <button type="submit" style="background-color:yellow">BOOK NOW</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var typePaymentSelect = document.getElementById("drTypePayment");
+            var loadFormPayment = document.getElementById("load_form_payment");
+
+            typePaymentSelect.addEventListener("change", function () {
+                if (typePaymentSelect.value == "2") { // "Chuyển khoản"
+                    loadFormPayment.style.display = "block";
+                } else {
+                    loadFormPayment.style.display = "none";
+                }
+            });
+        });
+    </script>*@
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.drTypePayment').change(function () {
+            var selectedType = $(this).val();
+            var typepm =@Html.Raw(Json.Encode(ViewBag.typepayment));
+            if (selectedType == '2' || typepm == '2') { // Nếu chọn phương thức thanh toán là 'Chuyển khoản'
+                $('#load_form_payment').show(); // Hiển thị phương thức thanh toán tương ứng
+                } else {
+                $('#load_form_payment').hide(); // Ẩn đi nếu chọn lại phương thức thanh toán là 'COD'
+                }
+            });
+    });
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#customerForm').submit(function (e) {
+            var customerName = $('#tenkh').val().trim(); // Lấy giá trị từ input và loại bỏ khoảng trắng đầu và cuối
+            var emailkh = $('#em').val().trim();
+            var socd = $('#cc').val().trim(); // Lấy giá trị từ input và loại bỏ khoảng trắng đầu và cuối
+            var isvalid = true;
+            var ngayden = $('#date-in').val().trim();
+            var ngaydi = $('#date-out').val().trim();
+            //kiem tra ngày đến và ngày đi có rỗng không
+            if (ngayden === '') {
+                alert('Lam on nhap ngay den');
+                isvalid = false;
+            }
+            if (ngaydi === '') {
+                alert('ban phai nhap ngay di');
+                isvalid = false;
+            }
+            // Kiểm tra xem tên khách hàng có rỗng không
+            if (customerName === '') {
+                alert('Please enter your name.');
+
+                // Thông báo nếu tên khách hàng rỗng
+                isvalid = false;
+                // e.preventDefault(); // Ngăn chặn form được submit
+            }
+
+            // Kiểm tra xem tên khách hàng có rỗng không
+            if (socd === '') {
+                alert('Please enter cd number.'); // Thông báo nếu tên khách hàng rỗng
+                // Ngăn chặn form được submit
+                isvalid = false;
+            }
+            if  (emailkh==='') {
+                alert('Please enter email address.');
+                isvalid = false;
+            }
+
+            if (!isvalid) {
+                e.preventDefault();
+
+            }
+
+        });
+        // Hàm kiểm tra email có đúng định dạng hay không
+        @*function isValidEmail(email) {
+            // Sử dụng biểu thức chính quy để kiểm tra định dạng email
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }*@
+    });
+    //
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+
+        var checkinInput = document.getElementById('date-in');
+
+        var checkoutInput = document.getElementById('date-out');
+
+        var today = new Date().toISOString().split('T')[0];
+        checkinInput.setAttribute('min', today);
+
+        // Khi người dùng thay đổi ngày đến, đặt ngày tối thiểu cho ngày đi
+        checkinInput.addEventListener('change', function () {
+            var checkinDate = new Date(checkinInput.value);
+            checkinDate.setDate(checkinDate.getDate() + 1); // Ngày đi phải lớn hơn ngày đến
+            checkoutInput.setAttribute('min', checkinDate.toISOString().split('T')[0]);
+        });
+
+        // Kiểm tra ngày đi có lớn hơn ngày đến khi submit form
+        document.getElementById('customerForm').addEventListener('submit', function (event) {
+            var checkinDate = new Date(checkinInput.value);
+            var checkoutDate = new Date(checkoutInput.value);
+            if (checkoutDate <= checkinDate) {
+                event.preventDefault(); // Ngăn chặn submit form
+                alert('Ngày đi phải lớn hơn ngày đến.');
+            }
+        })
+    });
+</script>
+
+
+<!-- Room Details Section End -->
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const stars = document.querySelectorAll('.rating i');
+        const ratingValue = document.getElementById('rating-value');
+
+        stars.forEach(star => {
+            star.addEventListener('click', function () {
+                let value = this.getAttribute('data-value');
+                ratingValue.value = value;
+
+                @*stars.forEach(s => s.classList.remove('selected'));*@
+
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.add('selected');
+                }
+            });
+        });
+    });
+</script> 

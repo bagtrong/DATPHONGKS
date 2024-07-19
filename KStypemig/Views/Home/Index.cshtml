@@ -1,0 +1,507 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--<h1>thời gian sesion là : @ViewBag.SessionTimeout phút</h1>-->
+<!-- Hero Section Begin -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero-text">
+                    <h1>Hoàng hôn Hotel</h1>
+                    <p>
+                        Chào mừng quý khách đến với khách sạn của chúng tôi, tọa lạc ngay trung tâm thành phố. 
+                        Chúng tôi tự hào mang đến trải nghiệm lưu trú sang trọng, 
+                        dịch vụ chuyên nghiệp và tiện nghi hiện đại. Hãy đến và tận hưởng kỳ nghỉ tuyệt vời cùng chúng tôi!
+                    </p>
+                    @*<a href="#" class="primary-btn">Discover Now</a>*@
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                <div class="booking-form">
+                    <h3>Booking Your Hotel</h3>
+                    <form action="/DatPhong/TimKiemPhong" method="get" id="booking-form">
+                        <div class="check-date">
+                            <label for="date-in">Check In:</label>
+                            <input type="date"  id="date-in" name="ngayden">
+                            @*//<i class="icon_calendar"></i>*@
+                        </div>
+                        <div class="check-date">
+                            <label for="date-out">Check Out:</label>
+                            <input type="date" @*class="date-input"*@ 
+                                   id="date-out" name="ngaydi">
+                            @*<i class="icon_calendar"></i>*@
+                        </div>
+                        <div class="select-option">
+                            <label for="guest">Adults(>18):</label>
+                            <select id="guest" name="adult">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+
+
+                            </select>
+                        </div>
+                        <div class="select-option">
+                            <label for="guest">Children:</label>
+                            <select id="guest" name="trecon">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="select-option">
+                            <label for="room">Bed:</label>
+                            <select id="room" name="bed">
+                                <option value="1">1 </option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                             </select>
+                        </div>
+                        <button type="submit">Check Availability</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item set-bg" data-setbg="/Content/wroot/img/hero/ks2.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="/Content/wroot/img/hero/ks.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="/Content/wroot/img/hero/hero-2.jpg"></div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- About Us Section Begin -->
+<section class="aboutus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <div class="section-title">
+                        <span>Giới thiệu</span>
+                        <h2>Khách sạn <br/>Hoàng hôn</h2>
+                    </div>
+                    <p class="f-para">
+                        Khách sạn chúng tôi tọa lạc tại trung tâm thành phố,
+                        mang đến sự tiện lợi và dễ dàng tiếp cận các điểm tham quan nổi tiếng,
+                        khu mua sắm và nhà hàng sang trọng. Với kiến trúc hiện đại và không gian thoáng đãng,
+                        khách sạn cung cấp các phòng nghỉ sang trọng, tiện nghi cao cấp, và dịch vụ chuyên nghiệp.
+                        Mỗi phòng đều được trang bị đầy đủ tiện nghi như TV màn hình phẳng, Wi-Fi miễn phí, minibar,
+                        và hệ thống điều hòa hiện đại. Ngoài ra, khách sạn còn có nhà hàng phục vụ các món ăn đa dạng
+                        từ ẩm thực địa phương đến quốc tế, để quý khách thư giãn. Chúng tôi cam kết mang đến trải nghiệm
+                        lưu trú tuyệt vời và dịch vụ khách hàng tận tâm, làm hài lòng cả những vị khách khó tính nhất.
+                        Hãy đến và tận hưởng kỳ nghỉ tuyệt vời tại khách sạn của chúng tôi!
+                    </p>
+                    @*<p class="s-para"> 
+                        So when it comes to booking the perfect hotel, vacation rental, resort,
+                        apartment, guest house, or tree house, we’ve got you covered.
+                    </p>
+                   <a href="#" class="primary-btn about-btn">Read More</a>*@
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-pic">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="~/Content/wroot/img/hero/ks3.jpg" alt="">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="~/Content/wroot/img/hero/ks.jpg" alt="" style="padding-bottom:50px">
+                            <img src="~/Content/wroot/img/hero/ks9.jpg" alt="">
+                        </div>
+                        @*
+        <div class="col-sm-6">
+            
+        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Us Section End -->
+<!-- Services Section End -->
+@*<section class="services-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>What We Do</span>
+                    <h2>Discover Our Services</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-036-parking"></i>
+                    <h4>Travel Plan</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-033-dinner"></i>
+                    <h4>Catering Service</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-026-bed"></i>
+                    <h4>Babysitting</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-024-towel"></i>
+                    <h4>Laundry</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-044-clock-1"></i>
+                    <h4>Hire Driver</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-012-cocktail"></i>
+                    <h4>Bar & Drink</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+<!-- Services Section End -->
+<!-- Home Room Section Begin -->
+<section class="hp-room-section">
+    <div class="container-fluid">
+        <div class="hp-room-items">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="@Url.Content("~/Content/wroot/img/room/room-b1.jpg")">
+                        <div class="hr-text">
+                            <h3>Phòng Tiêu Chuẩn</h3>
+                            <h2>Từ 200.000<span>/đêm</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Diện tích:</td>
+                                        <td>Từ 25m2 trở lên</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>Max persion 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>Tối đa 2 giường</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td>Wifi, Television, Bathroom,...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("Phongdetail", "Home", new {malp="LP01"})" class="primary-btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="/Content/wroot/img/room/room-b2.jpg">
+                        <div class="hr-text">
+                            <h3>Phòng Hạng Trung</h3>
+                            <h2>Từ 500.000<span>/đêm</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Diện tích:</td>
+                                        <td>Từ 30m2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>Tối đa 5 người</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>Tối đa 3 giường</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td>Wifi, Television, Bathroom,...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("Phongdetail", "Home", new {malp="LP02"})" class="primary-btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="/Content/wroot/img/room/room-b3.jpg">
+                        <div class="hr-text">
+                            <h3>Phòng cao cấp</h3>
+                            <h2>Từ 1.000.000<span>/đêm</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Diện tích:</td>
+                                        <td>30 ft</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>Max persion 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>King Beds</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td>Wifi, Television, Bathroom,...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("Phongdetail", "Home", new {malp="LP03"})" class="primary-btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="/Content/wroot/img/room/room-b4.jpg">
+                        <div class="hr-text">
+                            <h3>Phòng liên kết</h3>
+                            <h2>Từ 2.000.000<span>/đêm</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Diện tích:</td>
+                                        <td>Từ 50m2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>Max persion 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>King Beds</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td>Wifi, Television, Bathroom,...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("Phongdetail", "Home", new {malp="LP05"})" class="primary-btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Home Room Section End -->
+<!-- Testimonial Section Begin -->
+<!--<section class="testimonial-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Testimonials</span>
+                    <h2>What Customers Say?</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="testimonial-slider owl-carousel">
+                    <div class="ts-item">
+                        <p>
+                            After a construction project took longer than expected, my husband, my daughter and I
+                            needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
+                            city, neighborhood and the types of housing options available and absolutely love our
+                            vacation at Sona Hotel.
+                        </p>
+                        <div class="ti-author">
+                            <div class="rating">
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star-half_alt"></i>
+                            </div>
+                            <h5> - Alexander Vasquez</h5>
+                        </div>
+                        <img src="/Content/wroot/img/testimonial-logo.png" alt="">
+                    </div>
+                    <div class="ts-item">
+                        <p>
+                            After a construction project took longer than expected, my husband, my daughter and I
+                            needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
+                            city, neighborhood and the types of housing options available and absolutely love our
+                            vacation at Sona Hotel.
+                        </p>
+                        <div class="ti-author">
+                            <div class="rating">
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star-half_alt"></i>
+                            </div>
+                            <h5> - Alexander Vasquez</h5>
+                        </div>
+                        <img src="/Content/wroot/img/testimonial-logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+<!-- Testimonial Section End -->
+<!-- Blog Section Begin -->
+@*<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Hotel News</span>
+                    <h2>Our Blog & Event</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="blog-item set-bg" data-setbg="/Content/wroot/img/blog/blog-1.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Travel Trip</span>
+                        <h4><a href="#">Tremblant In Canada</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 15th April, 2019</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item set-bg" data-setbg="/Content/wroot/img/blog/blog-2.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Camping</span>
+                        <h4><a href="#">Choosing A Static Caravan</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 15th April, 2019</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item set-bg" data-setbg="/Content/wroot/img/blog/blog-3.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Event</span>
+                        <h4><a href="#">Copper Canyon</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 21th April, 2019</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="blog-item small-size set-bg" data-setbg="/Content/wroot/img/blog/blog-wide.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Event</span>
+                        <h4><a href="#">Trip To Iqaluit In Nunavut A Canadian Arctic City</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 08th April, 2019</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item small-size set-bg" data-setbg="/Content/wroot/img/blog/blog-10.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Travel</span>
+                        <h4><a href="#">Traveling To Barcelona</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 12th April, 2019</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+<!-- Blog Section End -->
+<script>
+    // custom.js
+    document.addEventListener('DOMContentLoaded', function () {
+
+
+        var checkinInput = document.getElementById('date-in');
+        
+        var checkoutInput = document.getElementById('date-out');
+
+        var today = new Date().toISOString().split('T')[0];
+        checkinInput.setAttribute('min', today);
+
+        // Khi người dùng thay đổi ngày đến, đặt ngày tối thiểu cho ngày đi
+        checkinInput.addEventListener('change', function () {
+            var checkinDate = new Date(checkinInput.value);
+            checkinDate.setDate(checkinDate.getDate() + 1); // Ngày đi phải lớn hơn ngày đến
+            checkoutInput.setAttribute('min', checkinDate.toISOString().split('T')[0]);
+        });
+
+        // Kiểm tra ngày đi có lớn hơn ngày đến khi submit form
+        document.getElementById('booking-form').addEventListener('submit', function (event) {
+            var checkinDate = new Date(checkinInput.value);
+            var checkoutDate = new Date(checkoutInput.value);
+            if (checkoutDate <= checkinDate) {
+                event.preventDefault(); // Ngăn chặn submit form
+                alert('Ngày đi phải lớn hơn ngày đến.');
+            }
+        });
+        //chuyển định dạng
+        checkinInput.addEventListener('change', function () {
+            // Chuyển đổi giá trị của input thành định dạng yyyy-mm-dd
+            var selectedDate = checkinInput.value; // Lấy giá trị ngày tháng từ input
+            var formattedDate = formatDate(selectedDate); // Chuyển đổi thành định dạng yyyy-mm-dd
+            checkinInput.value = formattedDate; // Gán giá trị mới cho input
+        });
+        //
+        checkoutInput.addEventListener('change', function () {
+            // Chuyển đổi giá trị của input thành định dạng yyyy-mm-dd
+            var selectedDate = checkoutInput.value; // Lấy giá trị ngày tháng từ input
+            var formattedDate = formatDate(selectedDate); // Chuyển đổi thành định dạng yyyy-mm-dd
+            checkoutInput.value = formattedDate; // Gán giá trị mới cho input
+        });
+    });
+
+    // Hàm chuyển đổi ngày tháng sang định dạng yyyy-mm-dd
+    function formatDate(dateString) {
+        var dateObj = new Date(dateString); // Tạo đối tượng Date từ chuỗi ngày tháng
+        var year = dateObj.getFullYear(); // Lấy năm
+        var month = ('0' + (dateObj.getMonth() + 1)).slice(-2); // Lấy tháng (thêm '0' nếu cần)
+        var day = ('0' + dateObj.getDate()).slice(-2); // Lấy ngày (thêm '0' nếu cần)
+        return year + '-' + month + '-' + day; // Trả về chuỗi yyyy-mm-dd
+    }
+
+
+    ;
+</script>
